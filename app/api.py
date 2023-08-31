@@ -40,7 +40,7 @@ def translate(translation_request: TranslationRequest):
 async def upload_file(
     file: Annotated[UploadFile, File()],
     trans_lang: Annotated[str, Form()],
-    src_lang: Annotated[str | None, Form()] = None
+    src_lang: Annotated[str, Form()]
 ):
 
     filename, file_type = parse_filename(file.filename)
