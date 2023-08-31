@@ -4,6 +4,6 @@ uvicorn
 pytest
 httpx
 flake8
-
+tenacity==8.2.3
 # Task 2 - add github actions and badges
 coveralls
