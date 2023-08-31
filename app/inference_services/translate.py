@@ -1,25 +1,19 @@
-from app.inference_services.base import inference_request
+from base import query
 
 
-def create_payload(text, source_language=None, target_language=None):
+def create_payload(text, target_language):
     payload = {
-        "instances": [
-            {
-                "sentence": text,
-                "target_language": target_language,
-                "source_language": source_language
-            }
-        ]
+        "inputs": ">>" + str(target_language) + "<<" + str(text)
     }
     return payload
 
 
-def translate(text, source_language=None, target_language=None):
+def translate(text, target_language=None):
     payload = create_payload(text,
-                             source_language,
                              target_language)
-    response = inference_request(payload).json()
+    response = query(payload)
+    response = response[20:-3]
     return response
 
 
-print(translate("Where are we", "English", "Luganda"))
+print(translate("Where are we", "nyn"))
