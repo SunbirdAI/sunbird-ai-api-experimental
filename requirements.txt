@@ -4,3 +4,6 @@ uvicorn
 pytest
 httpx
 flake8
+
+# Task 2 - add github actions and badges
+coveralls
