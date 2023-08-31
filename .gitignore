@@ -5,5 +5,7 @@ __pycache__/
 # Environments
 venv
 .env
-
 .idea/
+
+# Text data folder
+data

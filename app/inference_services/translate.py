@@ -2,6 +2,8 @@ from app.inference_services.base import (inference_request_en_mul,
                                          inference_request_mul_en)
 from app.inference_services.model import predicted_language
 
+from app.file_translate.utils import get_chunks as create_chunks
+
 
 def create_payload_en_mul(text, target_language):
     payload = {
@@ -42,29 +44,29 @@ def translate_text(text, source_language=None,  target_language=None):
 
     return response
 
+# Has been imported from file utils
+# def create_chunks(text: str, chunk_size: int):
+#     chunks = []
+#     last_char_index = len(text)
+#     chunk_start = 0
+#     chunk_stop = 0
 
-def create_chunks(text: str, chunk_size: int):
-    chunks = []
-    last_char_index = len(text)
-    chunk_start = 0
-    chunk_stop = 0
+#     while chunk_stop != last_char_index:
 
-    while chunk_stop != last_char_index:
+#         chunk_stop += chunk_size
 
-        chunk_stop += chunk_size
+#         if chunk_stop > last_char_index:
+#             chunk_stop = last_char_index
 
-        if chunk_stop > last_char_index:
-            chunk_stop = last_char_index
+#         if chunk_stop != last_char_index:
+#             while text[chunk_stop] != " ":
+#                 chunk_stop -= 1
 
-        if chunk_stop != last_char_index:
-            while text[chunk_stop] != " ":
-                chunk_stop -= 1
+#         chunks.append(text[chunk_start:chunk_stop])
 
-        chunks.append(text[chunk_start:chunk_stop])
+#         chunk_start = chunk_stop+1
 
-        chunk_start = chunk_stop+1
-
-    return chunks
+#     return chunks
 
 
 def long_text_translation(src_text: str, src_lang: str, trans_lang: str):
