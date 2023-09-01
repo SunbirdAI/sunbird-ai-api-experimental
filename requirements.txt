@@ -5,5 +5,6 @@ pytest
 httpx
 flake8
 tenacity==8.2.3
+python-dotenv==1.0.0
 # Task 2 - add github actions and badges
 coveralls
