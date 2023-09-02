@@ -1,7 +1,7 @@
 import joblib
 
-with open("app/inference_services/language_ID_Impl'\
-          '/pipeline_MultinomialNB.pkl", "rb") as f:
+with open('app/inference_services/language_ID_Impl'
+          '/pipeline_MultinomialNB.pkl', "rb") as f:
     model = joblib.load(f)
 
 
