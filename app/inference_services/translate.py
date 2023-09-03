@@ -1,5 +1,6 @@
-from base import inference_request_en_mul, inference_request_mul_en
-from language_ID_Impl.model import predicted_language
+from app.inference_services.base import (inference_request_en_mul,
+                                         inference_request_mul_en)
+from app.inference_services.language_ID_Impl import predicted_language
 
 
 def create_payload_en_mul(text, target_language):
@@ -16,7 +17,7 @@ def create_payload_mul_en(text):
     return payload
 
 
-def translate(text, target_language=None, source_language=None):
+def translate_text(text, source_language=None,  target_language=None):
     def translate_text():
         if source_language != 'eng' and target_language != 'eng':
             payload = create_payload_mul_en(text)
@@ -54,9 +55,6 @@ def translate(text, target_language=None, source_language=None):
             return response_text
 
 
-print(translate("Tugenda waa", "nyn", 'lug'))
-
-
 def create_chunks(text: str, chunk_size: int):
     # TODO: currently chunk size has to be larger than first word in text
     chunks = []
@@ -82,12 +80,12 @@ def create_chunks(text: str, chunk_size: int):
     return chunks
 
 
-def batch_text_translation(src_text: str, src_lang: str, trans_lang: str):
+def long_text_translation(src_text: str, src_lang: str, trans_lang: str):
     src_text_chunks = create_chunks(src_text, chunk_size=200)
     trans_text_chunks = []
     for chunk in src_text_chunks:
         trans_text_chunks.append(
-                         translate(text=chunk,
-                                   target_language=trans_lang,
-                                   source_language=src_lang))
+                         translate_text(text=chunk,
+                                        target_language=trans_lang,
+                                        source_language=src_lang))
     return " ".join(trans_text_chunks)
