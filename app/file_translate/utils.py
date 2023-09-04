@@ -4,6 +4,8 @@ import re
 import pypdf
 from fastapi import HTTPException
 
+from app.file_translate.file_process import FileUploader
+
 
 DATA_FOLDER = "data"  # folder to store txt files
 CHUNK_SIZE = 200  # maximum characters per chunk
@@ -122,9 +124,11 @@ def generate_translated_file(
     translated_filename = f"{filename}_TD"  # TODO: Propose add timestamp
     create_txt_file(text=translated_text, filename=translated_filename)
 
-    # TODO: Upload file to s3
+    file_uploader = FileUploader(translated_filename)
+    file_uploader.upload_file()
+    translated_file_url = file_uploader.retrieve_file_url()
 
-    return translated_filename  # TODO: return file url
+    return translated_file_url
 
 
 __all__ = [

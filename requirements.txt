@@ -21,3 +21,5 @@ coveralls
 # Task 4 - implement file translation
 python-multipart
 pypdf
+boto3
+python-dotenv
