@@ -1,7 +1,9 @@
 import joblib
+from pathlib import Path
 
-with open('app/inference_services/language_ID_Impl'
-          '/pipeline_MultinomialNB.pkl', "rb") as f:
+BASE_DIR = Path(__file__).resolve(strict=True).parent
+
+with open(f'{BASE_DIR}/pipeline_MultinomialNB.pkl', "rb") as f:
     model = joblib.load(f)
 
 

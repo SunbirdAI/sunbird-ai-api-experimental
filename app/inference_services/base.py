@@ -13,7 +13,7 @@ load_dotenv()
 def inference_request_en_mul(payload):
     API_URL = 'https://api-inference.huggingface.co/m'\
               'odels/Sunbird/sunbird-en-mul'
-    headers_en_mul = {"Authorization": os.getenv("HEADER")}
+    headers_en_mul = {"Authorization": os.getenv("HEADER_HUGGING_FACE_TOKEN")}
     response = requests.post(API_URL, headers=headers_en_mul, json=payload)
     return response.text
 
