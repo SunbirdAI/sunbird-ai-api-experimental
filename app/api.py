@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.schemas.tasks import TranslationRequest, TranslationResponse
-from app.inference_services.translate import translate_text
+from app.inference_services.translate import (translate_text,
+                                              long_text_translation)
 
 
 app = FastAPI()
@@ -13,8 +14,13 @@ def read_root():
 
 @app.post("/translate")
 def translate(translation_request: TranslationRequest):
-    response = translate_text(translation_request.text,
-                              translation_request.source_language,
-                              translation_request.target_language)
-    print(response)
+    if translation_request.text < 200:
+        response = translate_text(translation_request.text,
+                                  translation_request.source_language,
+                                  translation_request.target_language)
+    else:
+        response = long_text_translation(translation_request.text,
+                                         translation_request.source_language,
+                                         translation_request.target_language)
+
     return TranslationResponse(text=response)
