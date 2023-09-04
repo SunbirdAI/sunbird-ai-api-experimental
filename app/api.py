@@ -37,11 +37,11 @@ def translate(translation_request: TranslationRequest):
 
     return TranslationResponse(text=response, source_language=source_language)
 # file translate endpoint
-@app.post("/upload")
+@app.post("/api/file-translate")
 async def upload_file(
     file: Annotated[UploadFile, File()],
-    trans_lang: Annotated[str, Form()],
-    src_lang: Annotated[str, Form()]
+    src_lang: Annotated[str, Form()],
+    trans_lang: Annotated[str, Form()]
 ):
 
     filename, file_type = parse_filename(file.filename)
@@ -62,7 +62,5 @@ async def upload_file(
     )
 
     return {
-        'file_url': translated_file_url,
-        'trans_lang': trans_lang,
-        'src_lang': src_lang
+        'translated-file': translated_file_url
     }
