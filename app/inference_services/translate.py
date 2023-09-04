@@ -18,43 +18,32 @@ def create_payload_mul_en(text):
 
 
 def translate_text(text, source_language=None,  target_language=None):
-    def translate_text():
-        if source_language != 'eng' and target_language != 'eng':
-            payload = create_payload_mul_en(text)
-            response_eng = inference_request_mul_en(payload)
-            response_eng = response_eng[20:-3]
-            payload = create_payload_en_mul(response_eng,
-                                            target_language)
-            response = inference_request_en_mul(payload)
+    while source_language is None:
+        source_language = predicted_language(text)
 
-        elif source_language == 'eng':
-            payload = create_payload_en_mul(text,
-                                            target_language)
-            response = inference_request_en_mul(payload)
+    if source_language != 'eng' and target_language != 'eng':
+        payload = create_payload_mul_en(text)
+        response_eng = inference_request_mul_en(payload)
+        response_eng = response_eng[20:-3]
+        print(response_eng)
+        payload = create_payload_en_mul(response_eng,
+                                        target_language)
+        response_translate = inference_request_en_mul(payload)
 
-        elif target_language == 'eng':
-            payload = create_payload_mul_en(text)
-            response = inference_request_mul_en(payload)
-        response = response[20:-3]
-        return response
+    elif source_language == 'eng':
+        payload = create_payload_en_mul(text,
+                                        target_language)
+        response_translate = inference_request_en_mul(payload)
 
-    while True:
-        try:
-            if (len(text) > 3 and len(text) < 5000):
-                if source_language is None:
-                    source_language = predicted_language(text)
-                    response_text = translate_text()
-                else:
-                    response_text = translate_text()
-                return response_text
-        except ValueError:
-            response_text = ("Please enter a valid text longer than "
-                             "3 characters and less than 5000 characters")
-            return response_text
+    elif target_language == 'eng':
+        payload = create_payload_mul_en(text)
+        response_translate = inference_request_mul_en(payload)
+    response = response_translate[20:-3]
+
+    return response
 
 
 def create_chunks(text: str, chunk_size: int):
-    # TODO: currently chunk size has to be larger than first word in text
     chunks = []
     last_char_index = len(text)
     chunk_start = 0

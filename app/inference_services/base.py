@@ -8,7 +8,7 @@ load_dotenv()
 
 @retry(
     stop=stop_after_attempt(4),  # Maximum number of retries
-    wait=wait_exponential(multiplier=1, min=1, max=60)  # Exponential backoff
+    wait=wait_exponential(multiplier=1, min=90,)  # Exponential backoff
 )
 def inference_request_en_mul(payload):
     API_URL = 'https://api-inference.huggingface.co/m'\
@@ -20,7 +20,7 @@ def inference_request_en_mul(payload):
 
 @retry(
     stop=stop_after_attempt(4),  # Maximum number of retries
-    wait=wait_exponential(multiplier=1, min=1, max=60)  # Exponential backoff
+    wait=wait_exponential(multiplier=1, min=100)  # Exponential backoff
 )
 def inference_request_mul_en(payload):
     API_URL = 'https://api-inference.huggingface.co/m'\
