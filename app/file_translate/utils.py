@@ -5,6 +5,9 @@ import pypdf
 from fastapi import HTTPException
 
 from app.file_translate.file_process import FileUploader
+from app.inference_services.model import predicted_language as predict_language
+from app.inference_services.translate import translate_text \
+    as translate_text_low_level
 
 
 DATA_FOLDER = "data"  # folder to store txt files
@@ -58,7 +61,6 @@ def create_txt_file(text: str, filename: str):
         os.mkdir(DATA_FOLDER)
 
     with open(f"{DATA_FOLDER}/{filename}.txt", "w") as txt_file:
-        # TODO: existing file is deleted
         txt_file.write(text)
 
     return
@@ -91,7 +93,11 @@ def get_chunks(text: str, chunk_size: int):
 
 
 def translate_text(text: str, src_lang: str, trans_lang: str):
-    return text  # TODO: translation takes place
+    return translate_text_low_level(
+        text=text,
+        source_language=src_lang,
+        target_language=trans_lang
+    )
 
 
 def generate_translated_text(src_text: str, src_lang: str, trans_lang: str):
@@ -114,14 +120,16 @@ def generate_translated_file(
     src_text: str, src_lang: str, trans_lang: str, filename: str
 ):
 
-    # TODO: Identify source language
+    if src_lang is None:
+        src_lang = predict_language(src_text)
+
     translated_text = generate_translated_text(
         src_text=src_text,
         src_lang=src_lang,
         trans_lang=trans_lang
     )
 
-    translated_filename = f"{filename}_TD"  # TODO: Propose add timestamp
+    translated_filename = f"{filename}_td"
     create_txt_file(text=translated_text, filename=translated_filename)
 
     file_uploader = FileUploader(translated_filename)
