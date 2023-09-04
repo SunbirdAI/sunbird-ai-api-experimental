@@ -1,8 +1,12 @@
 pre-commit==3.3.3
-fastapi==0.100.1
-uvicorn==0.23.2
-pytest==7.4.0
-httpx==0.24.1
-flake8==6.1.0
+fastapi
+uvicorn
+pytest
+httpx
+flake8
 tenacity==8.2.3
 python-dotenv==1.0.0
+joblib
+# Task 2 - add github actions and badges
+coveralls
+sklearn

@@ -1,6 +1,6 @@
 from app.inference_services.base import (inference_request_en_mul,
                                          inference_request_mul_en)
-from app.inference_services.language_ID_Impl import predicted_language
+from app.inference_services.model import predicted_language
 
 
 def create_payload_en_mul(text, target_language):
@@ -23,7 +23,6 @@ def translate_text(text, source_language=None,  target_language=None):
             payload = create_payload_mul_en(text)
             response_eng = inference_request_mul_en(payload)
             response_eng = response_eng[20:-3]
-            print(response_eng)
             payload = create_payload_en_mul(response_eng,
                                             target_language)
             response = inference_request_en_mul(payload)
@@ -47,8 +46,7 @@ def translate_text(text, source_language=None,  target_language=None):
                     response_text = translate_text()
                 else:
                     response_text = translate_text()
-                print('Please')
-            return response_text
+                return response_text
         except ValueError:
             response_text = ("Please enter a valid text longer than "
                              "3 characters and less than 5000 characters")
