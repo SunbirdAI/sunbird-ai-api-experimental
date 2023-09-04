@@ -1,14 +1,13 @@
 import requests
 import os
 from dotenv import load_dotenv
-from tenacity import retry, stop_after_attempt, wait_exponential
+from tenacity import retry, wait_exponential
 
 load_dotenv()
 
 
 @retry(
-    stop=stop_after_attempt(4),  # Maximum number of retries
-    wait=wait_exponential(multiplier=1, min=90,)  # Exponential backoff
+    wait=wait_exponential(min=98,)  # Exponential backoff
 )
 def inference_request_en_mul(payload):
     API_URL = 'https://api-inference.huggingface.co/m'\
@@ -19,8 +18,7 @@ def inference_request_en_mul(payload):
 
 
 @retry(
-    stop=stop_after_attempt(4),  # Maximum number of retries
-    wait=wait_exponential(multiplier=1, min=100)  # Exponential backoff
+    wait=wait_exponential(min=98)  # Exponential backoff
 )
 def inference_request_mul_en(payload):
     API_URL = 'https://api-inference.huggingface.co/m'\

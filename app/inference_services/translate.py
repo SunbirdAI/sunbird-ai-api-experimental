@@ -25,7 +25,6 @@ def translate_text(text, source_language=None,  target_language=None):
         payload = create_payload_mul_en(text)
         response_eng = inference_request_mul_en(payload)
         response_eng = response_eng[20:-3]
-        print(response_eng)
         payload = create_payload_en_mul(response_eng,
                                         target_language)
         response_translate = inference_request_en_mul(payload)
