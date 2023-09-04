@@ -5,6 +5,7 @@ from app.inference_services.translate import (translate_text,
                                               predicted_language)
 from typing import Annotated
 from fastapi import FastAPI, File, UploadFile, Form
+from datetime import datetime as dt
 
 from app.file_translate.utils import parse_filename, validate_uploaded_file, \
     extract_txt_frm_upload, create_txt_file, generate_translated_file
@@ -44,15 +45,15 @@ async def upload_file(
 ):
 
     filename, file_type = parse_filename(file.filename)
+    filename = f'{filename}_{dt.now()}'
     validate_uploaded_file(file_type=file_type, file_size=file.size)
 
     content = await file.read()
     text = extract_txt_frm_upload(
         content=content, filename=filename, file_type=file_type)
-    # can create txt file with uploaded text
+
     create_txt_file(text=text, filename=filename)
 
-    # TODO: may be need to validate src and trans lang
     translated_file_url = generate_translated_file(
         src_text=text,
         src_lang=src_lang,
