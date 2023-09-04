@@ -39,7 +39,7 @@ def translate_text(text, source_language=None,  target_language=None):
         response_translate = inference_request_mul_en(payload)
     response = response_translate[20:-3]
 
-    return response
+    return response, source_language
 
 
 def create_chunks(text: str, chunk_size: int):
