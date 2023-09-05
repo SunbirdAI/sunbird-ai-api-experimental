@@ -12,5 +12,5 @@ sklearn
 joblib
 # Task 2 - add gitHub actions and badges
 coveralls
-scikit-learn<1.2.2
+scikit-learn
 requests
