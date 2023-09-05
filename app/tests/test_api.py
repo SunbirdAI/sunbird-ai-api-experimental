@@ -10,17 +10,17 @@ def test_root_api():
     assert response.status_code == 200
     assert response.json() == {"Hello": "World"}
 
-def test_detect():
+def test_mul_mul():
     content = {
-                "source_language": "",
-                "target_language": "nyn",
-                "text": "Where are we going"
+                "source_language": "nyn",
+                "target_language": "lug",
+                "text": "Turi ahu."
                 }
 
     response = client.post(
-        url='/detect',
+        url='/translate',
         content=json.dumps(content)
     )
 
     assert response.status_code == 200
-    assert response.json()['lang'] == 'eng'
+    assert response.json()['text'] == "N'olwekyo, tuli mu mbeera ng'eyo."
