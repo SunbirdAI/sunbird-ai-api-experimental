@@ -15,7 +15,7 @@ def inference_request_en_mul(payload):
               'odels/Sunbird/sunbird-en-mul'
     headers_en_mul = {"Authorization": os.getenv("HEADER_HUGGING_FACE_TOKEN")}
     response = requests.post(url, headers=headers_en_mul, json=payload)
-    # TODO Create a function that just calls it
+    # TODOCreate a function that just calls it
     # This is where i applied the exponential backoff
     if response.status_code == 503:
         estimated_time = response.json()['estimated_time']
