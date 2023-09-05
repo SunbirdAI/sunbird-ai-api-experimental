@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class TranslationResponse(BaseModel):
@@ -7,6 +7,6 @@ class TranslationResponse(BaseModel):
 
 
 class TranslationRequest(BaseModel):
-    source_language: str
+    source_language: str | None = None
     target_language: str
-    text: str
+    text: str = Field(max_length=5000, min_length=3)
