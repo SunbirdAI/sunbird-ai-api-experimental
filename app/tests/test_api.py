@@ -60,3 +60,20 @@ def test_eng_mul():
     assert response.status_code == 200
     assert response.json()['text'] == "Turi ahu."
     assert response.json()['source_language'] is None
+
+
+def test_language_detect():
+    content = {
+                "source_language": "",
+                "target_language": "lug",
+                "text": "Turi ahu."
+                }
+
+    response = client.post(
+        url='/translate',
+        content=json.dumps(content)
+    )
+
+    assert response.status_code == 200
+    assert response.json()['text'] == "N'olwekyo, tuli mu mbeera ng'eyo."
+    assert response.json()['source_language'] == "nyn"
