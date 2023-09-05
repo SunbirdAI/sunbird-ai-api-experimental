@@ -43,3 +43,20 @@ def test_mul_eng():
     assert response.status_code == 200
     assert response.json()['text'] == "We are at a crossroads."
     assert response.json()['source_language'] is None
+
+
+def test_eng_mul():
+    content = {
+                "source_language": "eng",
+                "target_language": "nyn",
+                "text": "Where are we."
+                }
+
+    response = client.post(
+        url='/translate',
+        content=json.dumps(content)
+    )
+
+    assert response.status_code == 200
+    assert response.json()['text'] == "Turi ahu."
+    assert response.json()['source_language'] is None
