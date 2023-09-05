@@ -18,6 +18,7 @@ def create_payload_mul_en(text):
 
 
 def translate_text(text, source_language=None,  target_language=None):
+    response_translate = []
     while source_language is None:
         source_language = predicted_language(text)
 
