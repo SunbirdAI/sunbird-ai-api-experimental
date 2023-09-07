@@ -27,7 +27,7 @@ def test_mul_mul(mocker):
 
 def test_mul_eng(mocker):
     fake_response_eng = [{"generated_text": "Where are we heading?"}]
-    mocker.patch('app.inference_services.base.inference_request_mul_en.reque'
+    mocker.patch('inference_request_mul_en.reque'
                  'sts.post').return_value.text.return_value = fake_response_eng
 
     assert translate_text('Tuli wa', 'lug',
