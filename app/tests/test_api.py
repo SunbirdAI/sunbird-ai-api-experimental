@@ -1,6 +1,5 @@
 from fastapi.testclient import TestClient
 from app.api import app
-from unittest.mock import MagicMock
 from app.inference_services.translate import translate_text, predicted_language
 client = TestClient(app)
 
@@ -24,7 +23,6 @@ def test_mul_mul(mocker):
 def test_mul_eng(mocker):
     fake_response_eng = '[{"generated_text":"Where are we heading?"}]'
     mocker.patch('requests.post').return_value.text = fake_response_eng
-    response = translate_text('Tuli wa', 'lug', 'eng')
     assert translate_text('Tuli wa', 'lug',
                           'eng') == "Where are we heading?"
 
