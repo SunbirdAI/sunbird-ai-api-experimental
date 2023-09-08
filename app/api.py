@@ -1,4 +1,3 @@
-from fastapi import FastAPI
 from app.schemas.tasks import TranslationRequest, TranslationResponse
 from app.inference_services.translate import (translate_text,
                                               long_text_translation,
@@ -6,10 +5,8 @@ from app.inference_services.translate import (translate_text,
 from typing import Annotated
 from fastapi import FastAPI, File, UploadFile, Form
 from datetime import datetime as dt
-
 from app.file_translate.utils import parse_filename, validate_uploaded_file, \
     extract_txt_frm_upload, create_txt_file, generate_translated_file
-
 
 app = FastAPI()
 
@@ -36,12 +33,14 @@ def translate(translation_request: TranslationRequest):
                                          translation_request.target_language)
 
     return TranslationResponse(text=response, source_language=source_language)
+
+
 # file translate endpoint
 @app.post("/api/file-translate")
 async def upload_file(
     file: Annotated[UploadFile, File()],
-    src_lang: Annotated[str, Form()],
-    trans_lang: Annotated[str, Form()]
+    src_lang: Annotated[str | None, Form()] = None,
+    trans_lang: Annotated[str | None, Form()] = None
 ):
 
     filename, file_type = parse_filename(file.filename)

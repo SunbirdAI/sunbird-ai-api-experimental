@@ -2,8 +2,6 @@ from app.inference_services.base import (inference_request_en_mul,
                                          inference_request_mul_en)
 from app.inference_services.model import predicted_language
 
-from app.file_translate.utils import get_chunks as create_chunks
-
 
 def create_payload_en_mul(text, target_language):
     payload = {
@@ -70,6 +68,7 @@ def translate_text(text, source_language=None,  target_language=None):
 
 
 def long_text_translation(src_text: str, src_lang: str, trans_lang: str):
+    from app.file_translate.utils import get_chunks as create_chunks
     src_text_chunks = create_chunks(src_text, chunk_size=200)
     trans_text_chunks = []
     for chunk in src_text_chunks:
