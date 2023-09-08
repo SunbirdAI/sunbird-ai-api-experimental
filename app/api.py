@@ -39,8 +39,8 @@ def translate(translation_request: TranslationRequest):
 @app.post("/api/file-translate")
 async def upload_file(
     file: Annotated[UploadFile, File()],
-    src_lang: Annotated[str | None, Form()] = None,
-    trans_lang: Annotated[str | None, Form()] = None
+    src_lang: Annotated[str, Form()],
+    trans_lang: Annotated[str, Form()]
 ):
 
     filename, file_type = parse_filename(file.filename)
