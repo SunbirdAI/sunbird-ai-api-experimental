@@ -1,8 +1,10 @@
 import unittest
 import os
+from unittest.mock import patch
 from fastapi import HTTPException
-from app.file_translate.utils import validate_uploaded_file, \
-    parse_filename, create_txt_file, DATA_FOLDER, get_chunks
+from app.file_translate.utils import generate_translated_text, \
+    validate_uploaded_file, parse_filename, create_txt_file, \
+    DATA_FOLDER, get_chunks
 
 
 class TestUtils(unittest.TestCase):
@@ -84,3 +86,22 @@ class TestUtils(unittest.TestCase):
                 ),
                 test_case['expected_chunks']
             )
+
+    @patch('app.file_translate.utils.translate_text')
+    @patch('app.file_translate.utils.get_chunks')
+    def test_generate_translated_text(
+        self,
+        mock_get_chunks,
+        mock_translate_text
+    ):
+        mock_get_chunks.return_value = ['1', '2']
+        mock_translate_text.return_value = 'chunk'
+
+        self.assertEqual(
+            generate_translated_text(
+                src_text='txt',
+                src_lang='src',
+                trans_lang='trans'
+            ),
+            'chunk chunk'
+        )
