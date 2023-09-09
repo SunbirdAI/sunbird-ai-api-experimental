@@ -11,24 +11,24 @@ def test_root_api():
 
 
 def test_mul_mul(mocker):
-    fake_response_eng = '[{"generated_text":"Where are we heading?"}]'
-    mocker.patch('requests.post').return_value.text = fake_response_eng
+    fake_response_eng = 'Where are we heading?'
+    mocker.patch('requests.post').return_value.json.return_value = fake_response_eng
 
-    fake_response_mul = '[{"generated_text":"Nituza nkahi?"}]'
-    mocker.patch('requests.post').return_value.text = fake_response_mul
+    fake_response_mul = 'Nituza nkahi?'
+    mocker.patch('requests.post').return_value.json.return_value = fake_response_mul
 
     assert translate_text('Tuli wa', 'lug', 'nyn') == 'Nituza nkahi?'
 
 
 def test_mul_eng(mocker):
-    fake_response_eng = '[{"generated_text":"Where are we heading?"}]'
-    mocker.patch('requests.post').return_value.text = fake_response_eng
+    fake_response_eng = 'Where are we heading?'
+    mocker.patch('requests.post').return_value.json.return_value = fake_response_eng
     assert translate_text('Tuli wa', 'lug',
                           'eng') == "Where are we heading?"
 
 
 def test_eng_mul(mocker):
-    fake_response_mul = '[{"generated_text":"Nituza nkahi?"}]'
+    fake_response_mul = 'Nituza nkahi?'
     mocker.patch('requests.post').return_value.text = fake_response_mul
 
     assert translate_text('Where are we heading?',

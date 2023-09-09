@@ -25,7 +25,6 @@ def translate_text(text, source_language=None,  target_language=None):
     if source_language != 'eng' and target_language != 'eng':
         payload = create_payload_mul_en(text)
         response_eng = inference_request_mul_en(payload)
-        response_eng = response_eng[20:-3]
         payload = create_payload_en_mul(response_eng,
                                         target_language)
         response_translate = inference_request_en_mul(payload)
@@ -38,9 +37,7 @@ def translate_text(text, source_language=None,  target_language=None):
     elif target_language == 'eng':
         payload = create_payload_mul_en(text)
         response_translate = inference_request_mul_en(payload)
-    response = response_translate[20:-3]
-
-    return response
+    return response_translate
 
 
 def create_chunks(text: str, chunk_size: int):
