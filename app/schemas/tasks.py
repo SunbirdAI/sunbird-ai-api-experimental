@@ -1,14 +1,4 @@
 from pydantic import BaseModel, Field
-# from enum import Enum
-
-# TODO: Include Enum
-# class Language(str, Enum):
-#     Acholi = "ach"
-#     Ateso = "teo"
-#     English = "eng"
-#     Luganda = "lug"
-#     Lugbara = "Lgg"
-#     Runyankole = "nyn"
 
 
 class TranslationResponse(BaseModel):
