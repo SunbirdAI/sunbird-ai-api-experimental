@@ -12,21 +12,21 @@ def create_payload(source_language_id, target_language_id, text):
 
 
 def translate_text(text, source_language=None,  target_language=None):
-    response_translate: str | None = None
+    response_translate = []
     while source_language is None:
         source_language = predicted_language(text)
 
     if source_language != 'English' and target_language != 'English':
-        payload = create_payload(source_language,'English', text)
+        payload = create_payload(source_language, 'English', text)
         response_eng = inference_request(payload)
         payload = create_payload('English', target_language, response_eng)
         response_translate = inference_request(payload)
 
-    elif source_language == 'eng':
-        payload = create_payload(source_language,'English', text)
+    elif source_language == 'English':
+        payload = create_payload(source_language, 'English', text)
         response_translate = inference_request(payload)
 
-    elif target_language == 'eng':
+    elif target_language == 'English':
         payload = create_payload('English', target_language, text)
         response_translate = inference_request(payload)
     return response_translate
@@ -65,3 +65,6 @@ def long_text_translation(src_text: str, src_lang: str, trans_lang: str):
                                         target_language=trans_lang,
                                         source_language=src_lang))
     return " ".join(trans_text_chunks)
+
+o = translate_text("Tuli wa", "Luganda", "Runyankole")
+print(type(o))
