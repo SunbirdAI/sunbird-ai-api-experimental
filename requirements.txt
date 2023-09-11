@@ -10,6 +10,6 @@ python-dotenv==1.0.0
 joblib==1.3.2
 # Task 2 - add gitHub actions and badges
 coveralls
-scikit-learn==1.2.2
+scikit-learn==1.3.0
 requests
 pytest-mock~=3.10.0
