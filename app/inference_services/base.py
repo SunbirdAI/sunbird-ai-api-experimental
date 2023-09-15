@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 url = 'https://sunbird-ai-api-5bq6okiwgq-ew.a.run.app'
-auth_type = 'token'  #@param ["token", "login-credentials"]
+auth_type = 'token'  # @param ["token", "login-credentials"]
 token = os.getenv('SUNBIRD_TOKEN')
 
 headers = {
@@ -15,7 +15,8 @@ headers = {
 
 
 def inference_request(payload):
-    response = requests.post(f"{url}/tasks/translate", headers=headers, json=payload)
+    response = requests.post(f"{url}/tasks/translate",
+                             headers=headers, json=payload)
     translated_text = response.text
     print(translated_text)
     return translated_text
