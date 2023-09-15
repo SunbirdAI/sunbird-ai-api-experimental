@@ -1,48 +1,21 @@
 import requests
 import os
-import time
 from dotenv import load_dotenv
-from tenacity import retry, wait_exponential
 
 load_dotenv()
 
+url = 'https://sunbird-ai-api-5bq6okiwgq-ew.a.run.app'
+auth_type = 'token'  #@param ["token", "login-credentials"]
+token = os.getenv('SUNBIRD_TOKEN')
 
-@retry(
-    wait=wait_exponential(multiplier=3, min=98, max=120)  # Exponential backoff
-)
-def inference_request_en_mul(payload):
-    url = 'https://api-inference.huggingface.co/m'\
-              'odels/Sunbird/sunbird-en-mul'
-    headers_en_mul = {"Authorization": os.getenv("HEADER_HUGGING_FACE_TOKEN")}
-    response = requests.post(url, headers=headers_en_mul, json=payload)
-    # TODOCreate a function that just calls it
-    # This is where i applied the exponential backoff
-    if response.status_code == 503:
-        estimated_time = response.json()['estimated_time']
-        time.sleep(estimated_time)
-        # logging.info(f"Model Loading ...{estimated_time}")
-        print(estimated_time)
-        response = requests.post(url, headers=headers_en_mul, json=payload)
-        return response.text
-    else:
-        return response.text
+headers = {
+    "Authorization": f"Bearer {token}",
+    "Content-Type": "application/json"
+}
 
 
-@retry(
-    wait=wait_exponential(multiplier=3, min=98, max=120)  # Exponential backoff
-)
-def inference_request_mul_en(payload):
-    url = 'https://api-inference.huggingface.co/m'\
-              'odels/Sunbird/mbart-mul-en'
-    headers_mul_en = {"Authorization": os.getenv("HEADER_HUGGING_FACE_TOKEN")}
-    response = requests.post(url, headers=headers_mul_en, json=payload)
-    # This is where i applied the exponential backoff
-    if response.status_code == 503:
-        estimated_time = response.json()['estimated_time']
-        time.sleep(estimated_time)
-        # logging.info(f"Model Loading ...{estimated_time}")
-        print(estimated_time)
-        response = requests.post(url, headers=headers_mul_en, json=payload)
-        return response.text
-    else:
-        return response.text
+def inference_request(payload):
+    response = requests.post(f"{url}/tasks/translate", headers=headers, json=payload)
+    translated_text = response.text
+    print(translated_text)
+    return translated_text
