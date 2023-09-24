@@ -5,21 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image" href="media/sunbird-favicon.jpg">
     <title>Sunbird Translate</title>
+    <link rel="stylesheet" href="output.css">
 </head>
-<body>
-    <header>
-        <div class="nav_bar">
-            <img src="media/Sunbird-Ai-SVG.svg">
+<body class="  bg-[url('media/background.png')] bg-cover bg-slate-100"  >
+    <header class="bg-[#282850]">
+        <div class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <div class="nav_bar_icon ">
+            <img class="h-8 w-auto" src="media/Sunbird-Ai-SVG.svg">
+            </div>
         </div>
     </header>
-    <main>
-        <div class="tt_translator_home">
-            <table class="tta_tbl" role="presentation">
-                <tbody>
-                    <tr>
-                        <td class="tta_incell">
+    <main class="p-12" >
+        <div class="bg-white p-10 mx-auto max-w-max rounded-xl shadow-lg flex items-center space-x-4">
+        <table class="tta_tbl" role="presentation">
+            <tbody>
+                <tr>
+                    <td class="tta_incell">
+                        <div class="source_language_drop">
+                            <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                <option value="">Auto Detect</option>
+                                <option value="English">English</option>
+                                <option value="Luganda">Luganda</option>
+                                <option value="Luganda">Lugbara</option>
+                                <option value="Luganda">Runyankole</option>
+                                <option value="Luganda">Ateso</option>
+                                <option value="Luganda">Acholi</option>                                    
+                            </select>
+                        </div>
+                        <div class="tta_text">
+                            <div class="tta_container">
+                                <textarea id="tta_input_text" cols="23" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="tta_outcell">
+                        <div class="target_language_drop">
                             <div class="source_language_drop">
-                                <select name="Souce Language" id="tta_select_drop" class="ttasrcsl">
+                                <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                                     <option value="">Auto Detect</option>
                                     <option value="English">English</option>
                                     <option value="Luganda">Luganda</option>
@@ -29,35 +51,16 @@
                                     <option value="Luganda">Acholi</option>                                    
                                 </select>
                             </div>
-                            <div class="tta_text">
-                                <div class="tta_container">
-                                    <textarea id="tta_input_text" cols="23" rows="5"></textarea>
-                                </div>
+                        </div>
+                        <div class="tta_text">
+                            <div class="tta_container">
+                                <textarea id="tta_output_text" cols="23" rows="5"></textarea>
                             </div>
-                        </td>
-                        <td class="tta_outcell">
-                            <div class="target_language_drop">
-                                <div class="source_language_drop">
-                                    <select name="Souce Language" id="tta_select_drop" class="ttasrcsl">
-                                        <option value="">Auto Detect</option>
-                                        <option value="English">English</option>
-                                        <option value="Luganda">Luganda</option>
-                                        <option value="Luganda">Lugbara</option>
-                                        <option value="Luganda">Runyankole</option>
-                                        <option value="Luganda">Ateso</option>
-                                        <option value="Luganda">Acholi</option>                                    
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="tta_text">
-                                <div class="tta_container">
-                                    <textarea id="tta_output_text" cols="23" rows="5"></textarea>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         </div>
     </main>
 </body>
