@@ -3,8 +3,7 @@ from app.inference_services.translate import (translate_text,
                                               long_text_translation,
                                               predicted_language)
 from typing import Annotated
-from fastapi import FastAPI, File, UploadFile, Form, Request
-from fastapi.templating import Jinja2Templates
+from fastapi import FastAPI, File, UploadFile, Form
 from datetime import datetime as dt
 from app.file_translate.utils import parse_filename, validate_uploaded_file, \
     extract_txt_frm_upload, create_txt_file, generate_translated_file
@@ -12,13 +11,10 @@ from app.file_translate.utils import parse_filename, validate_uploaded_file, \
 
 app = FastAPI()
 
-templates = Jinja2Templates(directory="app/template")
-
 
 @app.get("/")
-async def read_root(request: Request):
-    return templates.TemplateResponse('base.html',
-                                      context={'request': request})
+async def read_root():
+    return {'Hello World!'}
 
 
 @app.post("/translate", response_model=TranslationResponse)
