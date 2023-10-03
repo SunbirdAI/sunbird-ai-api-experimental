@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./front_end/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      aspectRatio: {
+        '3/1': '3 / 1',
+      }
+    },
     backgroundSize: {
       'auto': 'auto',
       'cover': 'cover',

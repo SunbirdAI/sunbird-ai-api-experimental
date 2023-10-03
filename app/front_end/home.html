@@ -15,52 +15,36 @@
             </div>
         </div>
     </header>
-    <main class="p-12" >
-        <div class="bg-white p-10 mx-auto max-w-max rounded-xl shadow-lg flex items-center space-x-4">
-        <table class="tta_tbl" role="presentation">
-            <tbody>
-                <tr>
-                    <td class="tta_incell">
-                        <div class="source_language_drop">
-                            <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                <option value="">Auto Detect</option>
-                                <option value="English">English</option>
-                                <option value="Luganda">Luganda</option>
-                                <option value="Luganda">Lugbara</option>
-                                <option value="Luganda">Runyankole</option>
-                                <option value="Luganda">Ateso</option>
-                                <option value="Luganda">Acholi</option>                                    
-                            </select>
-                        </div>
-                        <div class="tta_text">
-                            <div class="tta_container">
-                                <textarea id="tta_input_text" cols="23" rows="5"></textarea>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="tta_outcell">
-                        <div class="target_language_drop">
-                            <div class="source_language_drop">
-                                <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                    <option value="">Auto Detect</option>
-                                    <option value="English">English</option>
-                                    <option value="Luganda">Luganda</option>
-                                    <option value="Luganda">Lugbara</option>
-                                    <option value="Luganda">Runyankole</option>
-                                    <option value="Luganda">Ateso</option>
-                                    <option value="Luganda">Acholi</option>                                    
-                                </select>
-                            </div>
-                        </div>
-                        <div class="tta_text">
-                            <div class="tta_container">
-                                <textarea id="tta_output_text" cols="23" rows="5"></textarea>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <main class="p-12 flex " >
+        <div class="bg-white p-10 contain w-2/3 container rounded-xl shadow-lg items-center grid grid-cols-2 gap-2 ">
+            <div class="col1">
+                <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex  justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    <option value="">Auto Detect</option>
+                    <option value="English">English</option>
+                    <option value="Luganda">Luganda</option>
+                    <option value="Luganda">Lugbara</option>
+                    <option value="Luganda">Runyankole</option>
+                    <option value="Luganda">Ateso</option>
+                    <option value="Luganda">Acholi</option>                                    
+                </select>
+            </div>
+            <div class="col1">
+                <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    <option value="">Auto Detect</option>
+                    <option value="English">English</option>
+                    <option value="Luganda">Luganda</option>
+                    <option value="Luganda">Lugbara</option>
+                    <option value="Luganda">Runyankole</option>
+                    <option value="Luganda">Ateso</option>
+                    <option value="Luganda">Acholi</option>                                    
+                </select>
+            </div>
+            <div class="col1">
+                <!-- <textarea cols="30" rows="10"></textarea> -->
+            </div>
+            <div class="col1  ">
+                <textarea class="ring ring-slate-200 w-full aspect-[3/1] "></textarea>
+            </div>
         </div>
     </main>
 </body>
