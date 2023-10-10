@@ -15,36 +15,51 @@
             </div>
         </div>
     </header>
-    <main class="p-12 flex" >
-        
-        <div class="bg-white p-10 contain w-2/3 container rounded-xl shadow-lg items-center grid grid-cols-2 gap-2 ">
-            <div class="col1">
-                <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex  justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
-                    <option value="">Auto Detect</option>
-                    <option value="English">English</option>
-                    <option value="Luganda">Luganda</option>
-                    <option value="Lugbara">Lugbara</option>
-                    <option value="Runyankole">Runyankole</option>
-                    <option value="Ateso">Ateso</option>
-                    <option value="Acholi">Acholi</option>                                    
-                </select>
+    <main class="p-12 flex" >       
+        <div class="w-2/3 container rounded-xl shadow-lg items-center ">
+            <div class="nav__bar bg-blue-600 block">
+                <nav>
+                    <button type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    Translate Text   
+                    </button>     
+                    <button type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    Translate Doc   
+                    </button>   
+
+                </nav>
             </div>
-            <div class="col1">
-                <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ">
-                    <option value="">Auto Detect</option>
-                    <option value="English">English</option>
-                    <option value="Luganda">Luganda</option>
-                    <option value="Lugbara">Lugbara</option>
-                    <option value="Runyankole">Runyankole</option>
-                    <option value="Ateso">Ateso</option>
-                    <option value="Acholi">Acholi</option>                                      
-                </select>
-            </div>
-            <div class="col1 ">
-                <textarea class="w-full aspect-[3/1] shadow-sm ring-1 ring-inset ring-gray-300 lg:placeholder:text-5xl placeholder:font-thin" placeholder="Enter the texts to be translated"></textarea>
-            </div>
-            <div class="col1  ">
-                <textarea class="w-full aspect-[3/1] shadow-sm ring-1 ring-inset ring-gray-300" placeholder="Translated texts."></textarea>
+            <div class="bg-white px-10 py-6 pt-2 translate_area grid lg:grid-cols-2 md:grid-rows-1 gap-2 ">
+                <div class="translate_text">
+                    <div class="col1">
+                        <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex  justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
+                            <option value="">Auto Detect</option>
+                            <option value="English">English</option>
+                            <option value="Luganda">Luganda</option>
+                            <option value="Lugbara">Lugbara</option>
+                            <option value="Runyankole">Runyankole</option>
+                            <option value="Ateso">Ateso</option>
+                            <option value="Acholi">Acholi</option>                                    
+                        </select>
+                    </div>
+                    <div class="col2">
+                        <textarea class="w-full aspect-[3/1] shadow-sm ring-1 ring-inset ring-gray-300 lg:placeholder:text-5xl placeholder:font-thin" placeholder="Enter the texts to be translated"></textarea>
+                    </div>
+                </div>
+                <div class="translate_text">
+                    <div class="col1">
+                        <select name="Souce Language" id="tta_select_drop" class="ttasrcsl inline-flex  justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
+                            <option value="">Auto Detect</option>
+                            <option value="English">English</option>
+                            <option value="Luganda">Luganda</option>
+                            <option value="Lugbara">Lugbara</option>
+                            <option value="Runyankole">Runyankole</option>
+                            <option value="Ateso">Ateso</option>
+                            <option value="Acholi">Acholi</option>                                    
+                        </select>
+                    </div>
+                    <div class="col2">
+                        <textarea class="w-full aspect-[3/1] shadow-sm ring-1 ring-inset ring-gray-300 lg:placeholder:text-5xl placeholder:font-thin" placeholder="Translated Text."></textarea>
+                    </div>
             </div>
         </div>
     </main>
