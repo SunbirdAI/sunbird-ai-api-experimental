@@ -2,6 +2,11 @@
 *.pytest_cache
 *.pyc
 __pycache__/
+
+# 
+
+
+node_modules/
 # Environments
 venv
 .env
@@ -9,3 +14,22 @@ venv
 
 # Text data folder
 data
+
+
+# Ignore tags created by etags, ctags, gtags (GNU global) and cscope
+TAGS
+.TAGS
+!TAGS/
+tags
+.tags
+!tags/
+gtags.files
+GTAGS
+GRTAGS
+GPATH
+GSYMS
+cscope.files
+cscope.out
+cscope.in.out
+cscope.po.out
+

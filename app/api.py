@@ -8,12 +8,13 @@ from datetime import datetime as dt
 from app.file_translate.utils import parse_filename, validate_uploaded_file, \
     extract_txt_frm_upload, create_txt_file, generate_translated_file
 
+
 app = FastAPI()
 
 
 @app.get("/")
-def read_root():
-    return {"Hello": "World"}
+async def read_root():
+    return {'Hello World!'}
 
 
 @app.post("/translate", response_model=TranslationResponse)

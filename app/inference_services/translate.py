@@ -1,46 +1,43 @@
-from app.inference_services.base import (inference_request_en_mul,
-                                         inference_request_mul_en)
+from app.inference_services.base import inference_request
 from app.inference_services.model import predicted_language
+import json
 
 
-def create_payload_en_mul(text, target_language):
+def create_payload(source_language_id, target_language_id, text):
     payload = {
-        "inputs": ">>" + str(target_language) + "<<" + str(text)
-    }
-    return payload
-
-
-def create_payload_mul_en(text):
-    payload = {
-        "inputs": str(text)
+            "source_language": source_language_id,
+            "target_language": target_language_id,
+            "text": text
     }
     return payload
 
 
 def translate_text(text, source_language=None,  target_language=None):
-    response_translate = []
+    response_translate = None
     while source_language is None:
         source_language = predicted_language(text)
 
-    if source_language != 'eng' and target_language != 'eng':
-        payload = create_payload_mul_en(text)
-        response_eng = inference_request_mul_en(payload)
-        response_eng = response_eng[20:-3]
-        payload = create_payload_en_mul(response_eng,
-                                        target_language)
-        response_translate = inference_request_en_mul(payload)
+    if source_language != 'English' and target_language != 'English':
+        payload = create_payload(source_language, 'English', text)
+        response_eng = inference_request(payload)
+        y = json.loads(response_eng)
+        response_eng = y['text']
+        payload = create_payload('English', target_language, response_eng)
+        response_translate = inference_request(payload)
+        print(response_translate)
 
-    elif source_language == 'eng':
-        payload = create_payload_en_mul(text,
-                                        target_language)
-        response_translate = inference_request_en_mul(payload)
+    elif source_language == 'English':
+        payload = create_payload(source_language, target_language, text)
+        response_translate = inference_request(payload)
 
-    elif target_language == 'eng':
-        payload = create_payload_mul_en(text)
-        response_translate = inference_request_mul_en(payload)
-    response = response_translate[20:-3]
-
-    return response
+    elif target_language == 'English':
+        payload = create_payload(source_language, target_language, text)
+        response_translate = inference_request(payload)
+    else:
+        print("Failed to translate")
+    y = json.loads(response_translate)
+    response_translate = y['text']
+    return response_translate
 
 # Has been imported from file utils
 # def create_chunks(text: str, chunk_size: int):
