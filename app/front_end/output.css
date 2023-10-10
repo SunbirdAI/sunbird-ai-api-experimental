@@ -734,6 +734,72 @@ video {
   --tw-ring-color: rgb(209 213 219 / var(--tw-ring-opacity));
 }
 
+.placeholder\:text-3xl::-moz-placeholder {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.placeholder\:text-3xl::placeholder {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.placeholder\:text-6xl::-moz-placeholder {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+.placeholder\:text-6xl::placeholder {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+.placeholder\:text-xl::-moz-placeholder {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.placeholder\:text-xl::placeholder {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.placeholder\:text-5xl::-moz-placeholder {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.placeholder\:text-5xl::placeholder {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.placeholder\:font-bold::-moz-placeholder {
+  font-weight: 700;
+}
+
+.placeholder\:font-bold::placeholder {
+  font-weight: 700;
+}
+
+.placeholder\:font-thin::-moz-placeholder {
+  font-weight: 100;
+}
+
+.placeholder\:font-thin::placeholder {
+  font-weight: 100;
+}
+
+.placeholder\:text-blue-500::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.placeholder\:text-blue-500::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -743,5 +809,15 @@ video {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:placeholder\:text-5xl::-moz-placeholder {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .lg\:placeholder\:text-5xl::placeholder {
+    font-size: 3rem;
+    line-height: 1;
   }
 }
